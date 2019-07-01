@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.3"
 services:
   spark-master:
     image: spark-master:2.3.1
@@ -11,8 +11,9 @@ services:
       spark-network:
         ipv4_address: 10.5.0.2
     volumes:
-       - /mnt/spark-apps:/opt/spark-apps
-       - /mnt/spark-data:/opt/spark-data
+       - /home/jkondapalli/Documents/tenable/git/jkondapalli/docker-spark-cluster/apps:/opt/spark-apps
+       - /home/jkondapalli/Documents/tenable/git/jkondapalli/docker-spark-cluster/master:/opt/spark-data
+       - /home/jkondapalli/Documents/tenable/git/jkondapalli/docker-spark-cluster/submit:/opt/spark-submit
     environment:
       - "SPARK_LOCAL_IP=spark-master"
   spark-worker-1:
@@ -30,8 +31,9 @@ services:
       spark-network:
         ipv4_address: 10.5.0.3
     volumes:
-       - /mnt/spark-apps:/opt/spark-apps
-       - /mnt/spark-data:/opt/spark-data
+       - /home/jkondapalli/Documents/tenable/git/jkondapalli/docker-spark-cluster/apps:/opt/spark-apps
+       - /home/jkondapalli/Documents/tenable/git/jkondapalli/docker-spark-cluster/data1:/opt/spark-data
+       - /home/jkondapalli/Documents/tenable/git/jkondapalli/docker-spark-cluster/submit:/opt/spark-submit
   spark-worker-2:
     image: spark-worker:2.3.1
     container_name: spark-worker-2
@@ -47,8 +49,9 @@ services:
       spark-network:
         ipv4_address: 10.5.0.4
     volumes:
-       - /mnt/spark-apps:/opt/spark-apps
-       - /mnt/spark-data:/opt/spark-data
+       - /home/jkondapalli/Documents/tenable/git/jkondapalli/docker-spark-cluster/apps:/opt/spark-apps
+       - /home/jkondapalli/Documents/tenable/git/jkondapalli/docker-spark-cluster/data2:/opt/spark-data
+       - /home/jkondapalli/Documents/tenable/git/jkondapalli/docker-spark-cluster/submit:/opt/spark-submit
   spark-worker-3:
     image: spark-worker:2.3.1
     container_name: spark-worker-3
@@ -64,8 +67,9 @@ services:
       spark-network:
         ipv4_address: 10.5.0.5
     volumes:
-       - /mnt/spark-apps:/opt/spark-apps
-       - /mnt/spark-data:/opt/spark-data
+       - /home/jkondapalli/Documents/tenable/git/jkondapalli/docker-spark-cluster/apps:/opt/spark-apps
+       - /home/jkondapalli/Documents/tenable/git/jkondapalli/docker-spark-cluster/data3:/opt/spark-data
+       - /home/jkondapalli/Documents/tenable/git/jkondapalli/docker-spark-cluster/submit:/opt/spark-submit
 networks:
   spark-network:
     driver: bridge
